@@ -67,3 +67,5 @@ INSTALL_FILES="1c${OC_ESB_TYPE}_${OC_ESB_VERSION}_all.deb"
 ### install_from_repo
 APTLY_REPO_COMPONENTS="1c main"
 INSTALL_PACKS="1c${OC_ES
+```
+ - Запускаем сборку образа *docker/users/builds/esb/docker-build.sh*
