@@ -40,7 +40,7 @@
 ## Сборка **1С: Шины (ESB)**
 
 - Необходимо, чтобы в системе были установлены приложения: `debhelper devscripts dialog`.
-- Поместите файлы *1c_enterprise_esb_7.1.4+12_linux_x86_64.tar.gz* и *1c_enterprise_esb_with_ide_7.1.4+12_linux_x86_64.tar.gz* в `build_deb/esb`.
+- Поместите файлы *1c_enterprise_esb_7.1.4+12_linux_x86_64.tar.gz* и *1c_enterprise_esb_with_ide_7.1.4+12_linux_x86_64.tar.gz* в `build_deb`.
 - Запустите сборку deb пакетов командой: `build_deb/esb/debuild.sh`.
 - По окончании сборки получите файлы, например: *1cesb_7.1.4+12_all.deb* и *1cesbide_7.1.4+12_all.deb*.
 - Поместите установочные файлы в `docker/common_context/build/distr`, они должны называться, например: *1cesb_7.1.4+12_all.deb* и *1cesbide_7.1.4+12_all.deb*.

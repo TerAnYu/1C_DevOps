@@ -15,7 +15,7 @@ LABEL org.opencontainers.image.authors="Agibalov Sergei <agibse@rarus.ru>" \
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=SC1091
-RUN apt update && apt install -y procps locales gosu default-jdk && \
+RUN apt update && apt install -y procps locales gosu default-jdk git && \
     echo "ru_RU.UTF-8 UTF-8" >> /etc/locale.gen && \
     locale-gen && \
     update-locale LANG=ru_RU.UTF-8
