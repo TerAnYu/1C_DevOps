@@ -7,18 +7,32 @@ FROM "${REGISTRY}${OS_TAG}"
 ARG OC_ESB_VERSION \
     OC_ESB_TYPE=esb
 
-LABEL maintainer="Agibalov Sergei <agibse@rarus.ru>" \
+LABEL org.opencontainers.image.authors="Agibalov Sergei <agibse@rarus.ru>" \
     version="${OC_ESB_TYPE}:${OC_ESB_VERSION}" \
-    manufacturer="1C"
+    manufacturer="1C" \
+    description="Midified Teremshonok Anton <gitrepo@teranyu.com>"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=SC1091
+RUN apt update && apt install -y procps locales gosu default-jdk && \
+    echo "ru_RU.UTF-8 UTF-8" >> /etc/locale.gen && \
+    locale-gen && \
+    update-locale LANG=ru_RU.UTF-8
+
+ENV LANG=ru_RU.UTF-8 \
+    LANGUAGE=ru_RU:ru \
+    LC_ALL=ru_RU.UTF-8
+
 RUN --mount=from=common_context,target=/common_context \
     --mount=from=context_arg,target=/context_arg \
     set -eux; \
     . common_context/install; \
+    mkdir -p /var/opt/1C/1CE/instances/logs && \
+    chmod 777 /var/opt/1C/1CE/instances; \
     install_packs
+
+ENV JAVA_HOME=/usr/lib/jvm/default-java
 
 ENV OC_ESB_TYPE=${OC_ESB_TYPE} \
     OC_ESB_VERSION=${OC_ESB_VERSION}

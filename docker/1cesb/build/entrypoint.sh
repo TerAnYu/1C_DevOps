@@ -47,12 +47,14 @@ esb() {
 
 if [ "$1" == "sh" ]; then
     exec sh
+elif [ "$1" == "tail" ]; then
+    tail -f /dev/null
 elif [ "$1" == "bash" ]; then
     exec /bin/bash
 elif [ "$1" = "esb" ]; then
     esb
 else
-    exec /bin/bash
+    esb
 fi
 
 exit 0

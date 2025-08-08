@@ -44,7 +44,9 @@ install_from_repo() {
 install_from_file() {
 
     for fileName in ${INSTALL_FILES}; do
-        dpkg -i "/context/distr/${fileName}";
+        dpkg -i "/common_context/distr/${fileName}";
+#        ls -la "/common_context/";
+#        cat /var/lib/dpkg/info/1cesb.postinst;
     done;
 
 }
